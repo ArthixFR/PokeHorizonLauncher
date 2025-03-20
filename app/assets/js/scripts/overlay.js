@@ -234,7 +234,7 @@ document.getElementById('accountSelectCancel').addEventListener('click', () => {
 // Bind account select manage button.
 document.getElementById('accountSelectManage').addEventListener('click', async () => {
     await prepareSettings()
-    switchView(getCurrentView(), VIEWS.settings, 500, 500, () => {
+    switchView(getCurrentView(), VIEWS.settings, 150, 150, () => {
         settingsNavItemListener(document.getElementById('settingsNavAccount'), false)
     })
     toggleOverlay(false)

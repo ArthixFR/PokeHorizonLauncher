@@ -684,11 +684,11 @@ function slide_(up){
                 newsBtn.style.transition = 'none'
             }
             newsGlideCount--
-        }, 2000)
+        }, 500)
     } else {
         setTimeout(() => {
             newsGlideCount--
-        }, 2000)
+        }, 500)
         landingContainer.style.background = null
         lCLCenter.style.transition = null
         newsBtn.style.transition = null
@@ -711,7 +711,7 @@ document.getElementById('newsButton').onclick = () => {
         $('#landingContainer *').attr('tabindex', '-1')
         $('#newsContainer, #newsContainer *, #lower, #lower #center *').removeAttr('tabindex')
         if(newsAlertShown){
-            $('#newsButtonAlert').fadeOut(2000)
+            $('#newsButtonAlert').fadeOut(500)
             newsAlertShown = false
             ConfigManager.setNewsCacheDismissed(true)
             ConfigManager.save()
