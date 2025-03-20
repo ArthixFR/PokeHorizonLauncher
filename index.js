@@ -362,3 +362,15 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+app.on('custom-minimize', () => {
+    if (win !== null) {
+        if (!win.isMinimized()) win.minimize()
+    }
+})
+
+app.on('custom-focus', () => {
+    if (win !== null) {
+        if (win.isMinimized()) win.focus()
+    }
+})
