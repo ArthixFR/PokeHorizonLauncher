@@ -542,15 +542,15 @@ body, button {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
     }
-    
+
     20%, 80% {
         transform: translate3d(2px, 0, 0);
     }
-  
+
     30%, 50%, 70% {
         transform: translate3d(-4px, 0, 0);
     }
-  
+
     40%, 60% {
         transform: translate3d(4px, 0, 0);
     }
@@ -3426,7 +3426,7 @@ input:checked + .toggleSwitchSlider:before {
     top: 25px;
     display: none;
 }
- 
+
 /* Left side of launch details container, displays percentage and a divider. */
 #launch_details_left {
     display: flex;
@@ -3713,10 +3713,6 @@ input:checked + .toggleSwitchSlider:before {
     position: relative;
     background: rgba(0, 0, 0, 0.25);
 }
-.accountListing[selected] {
-    cursor: default;
-    opacity: 1.0;
-}
 .accountListing:hover,
 .accountListing:focus {
     outline: none;
@@ -3854,7 +3850,8 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Server selection confirm button styles. */
 #serverSelectConfirm,
-#accountSelectConfirm {
+#accountSelectConfirm,
+#accountSelectManage {
     background: none;
     border: 1px solid #ffffff;
     color: white;
