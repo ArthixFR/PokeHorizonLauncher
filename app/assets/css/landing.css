@@ -12,6 +12,11 @@
     overflow-y: hidden;
 }
 
+.fixed_title {
+    height: 80px;
+    padding-top: 32px;
+}
+
 /* Upper content container. */
 #landingContainer > #upper {
     position: relative;
@@ -30,6 +35,7 @@
     display: inline-flex;
     width: 70%;
     height: 100%;
+    justify-content: center;
 }
 #landingContainer > #upper > #right {
     display: inline-flex;
