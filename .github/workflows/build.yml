@@ -141,6 +141,7 @@ jobs:
           name: Mise à jour ${{ env.VERSION }}
           body_path: changelog.txt  # Utilisation du fichier changelog.txt comme body
           files: |
+            dist/latest*.yml
             dist/*.exe
             dist/*.dmg
             dist/*.AppImage
