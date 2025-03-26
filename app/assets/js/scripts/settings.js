@@ -2,8 +2,6 @@
 const os     = require('os')
 const semver = require('semver')
 
-const PACKAGE_JSON = require('./../package.json')
-
 const DropinModUtil  = require('./assets/js/dropinmodutil')
 const { MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR } = require('./assets/js/ipcconstants')
 
