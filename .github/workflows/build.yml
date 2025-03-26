@@ -10,7 +10,7 @@ on:
 jobs:
   release:
     runs-on: ${{ matrix.os }}
-    if: ${{ env.VERSION_CHANGED == 'true' }}  # Exécuter seulement si la version change
+    if: steps.check_version.outputs.VERSION_CHANGED == 'true'  # Exécuter seulement si la version change
 
     permissions:
       contents: write
