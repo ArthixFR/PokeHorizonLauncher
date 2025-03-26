@@ -67,7 +67,6 @@ jobs:
       - name: Build
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REMOTE_DISTRO_URL: ${{ vars.REMOTE_DISTRO_URL }}
         run: npm run dist
         shell: bash
       - name: Upload artifact
