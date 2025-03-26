@@ -51,7 +51,7 @@ if(!isDev){
                 loggerAutoUpdater.info('New update available', info.version)
 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `${PACKAGE_JSON.homepage}/releases/download/v${info.version}/${PACKAGE_JSON.productName.replace(/[èéêë]/g,'e').replace(' ', '-')}-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
+                    info.darwindownload = `${PACKAGE_JSON.homepage}/releases/download/v${info.version}/${PACKAGE_JSON.name}-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
                     showUpdateUI(info)
                 }
 
