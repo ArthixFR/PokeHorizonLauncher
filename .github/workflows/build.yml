@@ -74,6 +74,7 @@ jobs:
         with:
           name: build-${{ matrix.os }}
           path: |
+            dist/latest*.yml
             dist/*.exe
             dist/*.dmg
             dist/*.AppImage
@@ -119,7 +120,6 @@ jobs:
         id: generate_changelog
         run: |
           REPO_URL="https://github.com/${{ github.repository }}"
-          echo "🚀 Nouvelle version ${{ env.VERSION }} publiée automatiquement." > changelog.txt
           
           if [ -z "$PREV_TAG" ]; then
             echo "🎉 Première release !" >> changelog.txt
@@ -138,7 +138,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
+          name: Mise à jour ${{ env.VERSION }}
           body_path: changelog.txt  # Utilisation du fichier changelog.txt comme body
           files: |
             dist/*.exe
