@@ -10,7 +10,7 @@ on:
 jobs:
   release:
     runs-on: ${{ matrix.os }}
-    if: env.VERSION_CHANGED == 'true'  # Exécuter seulement si la version change
+    if: ${{ env.VERSION_CHANGED == 'true' }}  # Exécuter seulement si la version change
 
     permissions:
       contents: write
@@ -46,8 +46,10 @@ jobs:
           
           if [ "$PREV_VERSION" != "$CURR_VERSION" ]; then
             echo "VERSION_CHANGED=true" >> $GITHUB_ENV
+            echo "VERSION_CHANGED=true" >> $GITHUB_OUTPUT  # Correctement défini comme output
           else
             echo "VERSION_CHANGED=false" >> $GITHUB_ENV
+            echo "VERSION_CHANGED=false" >> $GITHUB_OUTPUT
           fi
         shell: bash
 
