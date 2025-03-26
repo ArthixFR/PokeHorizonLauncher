@@ -12,6 +12,8 @@ const isDev                          = require('./assets/js/isdev')
 const { LoggerUtil }                 = require('helios-core')
 const Lang                           = require('./assets/js/langloader')
 
+const PACKAGE_JSON = require('./../package.json')
+
 const loggerUICore             = LoggerUtil.getLogger('UICore')
 const loggerAutoUpdater        = LoggerUtil.getLogger('AutoUpdater')
 
@@ -49,7 +51,7 @@ if(!isDev){
                 loggerAutoUpdater.info('New update available', info.version)
 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/Helios-Launcher-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
+                    info.darwindownload = `${PACKAGE_JSON.homepage}/releases/download/v${info.version}/${PACKAGE_JSON.productName.toLowerCase().replaceAll(' ', '')}-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
                     showUpdateUI(info)
                 }
 

@@ -2,6 +2,8 @@
 const os     = require('os')
 const semver = require('semver')
 
+const PACKAGE_JSON = require('./../package.json')
+
 const DropinModUtil  = require('./assets/js/dropinmodutil')
 const { MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR } = require('./assets/js/ipcconstants')
 
@@ -1453,7 +1455,7 @@ function populateAboutVersionInformation(){
  */
 function populateReleaseNotes(){
     $.ajax({
-        url: 'https://github.com/dscalzi/HeliosLauncher/releases.atom',
+        url: `${PACKAGE_JSON.homepage}/releases.atom`,
         success: (data) => {
             const version = 'v' + remote.app.getVersion()
             const entries = $(data).find('entry')
