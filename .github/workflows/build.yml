@@ -95,11 +95,39 @@ jobs:
         env:
           VERSION: ${{ env.VERSION }}
 
-      - name: Create GitHub Release
+      - name: Get previous tag
+        id: get_previous_tag
+        run: echo "PREV_TAG=$(git describe --tags --abbrev=0 --always || echo '')" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Generate changelog
+        id: generate_changelog
+        run: |
+          REPO_URL="https://github.com/${{ github.repository }}"
+          echo "🚀 Nouvelle version ${{ env.VERSION }} publiée automatiquement." > changelog.txt
+          
+          if [ -z "$PREV_TAG" ]; then
+            echo "🎉 Première release !" >> changelog.txt
+          else
+            echo "### 📜 Changements depuis la dernière version :" >> changelog.txt
+            echo "" >> changelog.txt
+            echo "Génération du changelog depuis $PREV_TAG..." >> changelog.txt
+            git log $PREV_TAG..HEAD --pretty=format:"- %s (%h)" >> changelog.txt
+          fi
+
+          echo "Changelog généré :"
+          cat changelog.txt
+        shell: bash
+
+      - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ env.VERSION }}
-          name: Release v${{ env.VERSION }}
-          body: "🚀 Nouvelle version v${{ env.VERSION }} publiée automatiquement."
+          name: Release ${{ env.VERSION }}
+          body_path: changelog.txt  # Utilisation du fichier changelog.txt comme body
+          files: |
+            dist/*.exe
+            dist/*.dmg
+            dist/*.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
