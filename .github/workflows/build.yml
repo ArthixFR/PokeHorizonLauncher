@@ -62,3 +62,36 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run dist
         shell: bash
+  release_version:
+    needs: release
+    runs-on: ubuntu-latest
+    if: needs.release.result == 'success'  # Exécuter seulement si le build a réussi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Nécessaire pour push des tags
+
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Create Git tag
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+        env:
+          VERSION: ${{ env.VERSION }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: Release v${{ env.VERSION }}
+          body: "🚀 Nouvelle version v${{ env.VERSION }} publiée automatiquement."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
