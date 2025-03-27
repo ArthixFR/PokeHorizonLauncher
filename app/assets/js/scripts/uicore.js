@@ -191,6 +191,9 @@ document.addEventListener('readystatechange', function () {
         document.getElementById('launch_details_right').style.maxWidth = 170.8
         document.getElementById('launch_progress_label').style.width = 53.21
 
+        $('img').bind('dragstart', function(){
+            return false
+        })
     }
 
 }, false)
