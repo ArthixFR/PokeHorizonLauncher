@@ -130,7 +130,7 @@ jobs:
             echo "### 📜 Changements depuis la dernière version :" >> changelog.txt
             echo "" >> changelog.txt
             echo "Génération du changelog depuis $PREV_TAG..."
-            git log "$PREV_TAG"..HEAD --pretty=format:"- %s (%h)" >> changelog.txt
+            git log "$PREV_TAG"..HEAD --pretty=format:"- %s (%h)" --invert-grep --grep="Passage en *.*" >> changelog.txt
           fi
 
           echo "Changelog généré :"
