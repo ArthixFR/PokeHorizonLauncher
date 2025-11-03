@@ -22,7 +22,7 @@
     position: relative;
     transition: top .5s ease;
     top: 0px;
-    height: 77%;
+    height: 82%;
     display: flex;
 }
 #landingContainer > #upper > #left {
@@ -45,48 +45,48 @@
 
 /* Lower content container. */
 #landingContainer > #lower {
-    height: 23%;
-    display: flex;
+    height: 18%;
+    display: inline-grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-content: center;
+    width: -webkit-fill-available;
+    padding: 0 32px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
+
 #landingContainer > #lower > #left {
     position: relative;
     transition: top .5s ease;
-    top: 0px;
+    top: 0;
     height: 100%;
-    width: 33%;
-    display: inline-flex;
-    justify-content: center;
+    justify-self: left;
+    align-content: center;
 }
 #landingContainer > #lower > #left #content {
     position: relative;
-    top: 25px;
     display: inline-flex;
     line-height: 24px;
-    left: 50px;
 }
 #landingContainer > #lower > #center {
     position: relative;
     transition: top .5s ease;
-    top: 0px;
+    top: 0;
     height: 100%;
-    width: 34%;
-    display: inline-flex;
-    justify-content: center;
+    justify-self: center;
 }
+
 #landingContainer > #lower > #center #content {
     position: relative;
     z-index: 500;
     transition: top .5s ease;
-    top: 10px;
 }
 #landingContainer > #lower > #right {
     position: relative;
     transition: top .5s ease;
-    top: 0px;
+    top: 0;
     height: 100%;
-    width: 33%;
-    display: inline-flex;
+    align-content: center;
+    justify-self: end;
 }
 
 /*******************************************************************************
@@ -940,7 +940,7 @@
     letter-spacing: 2px;
     text-shadow: 0px 0px 0px #bebcbb;
     font-size: 11px;
-    line-height: 30px;
+    margin-top: 8px;
     display: flex;
     transition: 0.25s ease;
 }
@@ -952,7 +952,6 @@
 /* Main launch content container. */
 #landingContainer > #lower > #right #launch_content {
     position: relative;
-    top: 25px;
     display: inline-flex;
 }
 
@@ -986,7 +985,6 @@
 /* Launch details main container, hidden until launch processing begins. */
 #launch_details {
     position: relative;
-    top: 25px;
     display: none;
 }
 
@@ -1035,7 +1033,7 @@
 /* Progress bar styles. */
 #launch_progress[value] {
     height: 3px;
-    width: 265px;
+    width: 255px;
     -webkit-appearance: none;
 }
 #launch_progress[value]::-webkit-progress-bar {
